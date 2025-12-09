@@ -1,25 +1,17 @@
 package com.example.mediadatabase
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import com.example.mediadatabase.AddMediaActivity
-import com.example.mediadatabase.R
-import com.example.mediadatabase.RemoveMediaActivity
+import androidx.core.view.ViewCompat
+import androidx.core.view.WindowInsetsCompat
 
 class LoginActivity : AppCompatActivity() {
 
-    private lateinit var loginButton : Button
-    private lateinit var signUpButton : Button
-
-    private lateinit var username: EditText
-
-    private lateinit var sName: String
+    private lateinit var addMediaButton : Button
+    private lateinit var removeMediaButton : Button
 
 
 
@@ -29,35 +21,28 @@ class LoginActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_login)
 
-        loginButton = findViewById<Button>(R.id.login)
-        signUpButton = findViewById<Button>(R.id.signup)
-        username = findViewById<EditText>(R.id.user)
+        addMediaButton = findViewById<Button>(R.id.add_media)
+        removeMediaButton = findViewById<Button>(R.id.remove_media)
 
-        loginButton.setOnClickListener { loginUser() }
-        signUpButton.setOnClickListener { signUpUser() }
+        addMediaButton.setOnClickListener { addMedia() }
+        removeMediaButton.setOnClickListener { removeMedia() }
 
     }
 
-    fun setPreferences(context: Context){
-        val sp: SharedPreferences =
-            context.getSharedPreferences(context.packageName + "_preferences", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sp.edit()
-        sName = username.text.toString()
-        editor.putString("username", sName)
-        editor.commit()
-    }
-
-    fun loginUser() {
-        setPreferences(this)
-        val intent = Intent(this, AddMediaActivity::class.java)
+    fun addMedia() {
+        var intent = Intent(this, AddMediaActivity::class.java)
         startActivity(intent)
     }
 
-    fun signUpUser() {
-        setPreferences(this)
-        val intent = Intent(this, RemoveMediaActivity::class.java)
+    fun removeMedia() {
+        var intent = Intent(this, RemoveMediaActivity::class.java)
         startActivity(intent)
     }
+
+
+
+
+
 
 
 }

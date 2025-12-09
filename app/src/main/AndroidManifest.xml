@@ -19,7 +19,7 @@
             android:value="ca-app-pub-3940256099942544~3347511713" />
 
         <activity
-            android:name=".LoginActivity"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,7 +30,7 @@
 
         <activity android:name=".AddMediaActivity" />
         <activity android:name=".RemoveMediaActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".LoginActivity"/>
         <activity android:name="com.google.android.gms.ads.AdActivity" />
 
     </application>
