@@ -15,8 +15,7 @@ import com.example.mediadatabase.RemoveMediaActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var loginButton : Button
-    private lateinit var signUpButton : Button
+    private lateinit var enterButton : Button
 
     private lateinit var username: EditText
     private lateinit var media : Media
@@ -30,12 +29,10 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        loginButton = findViewById<Button>(R.id.login)
-        signUpButton = findViewById<Button>(R.id.signup)
+        enterButton = findViewById<Button>(R.id.enter)
         username = findViewById<EditText>(R.id.user)
 
-        loginButton.setOnClickListener { loginUser() }
-        signUpButton.setOnClickListener { signUpUser() }
+        enterButton.setOnClickListener { loginUser() }
 
         dark = findViewById<Button>(R.id.dark)
         light = findViewById<Button>(R.id.light)
@@ -56,7 +53,7 @@ class MainActivity : AppCompatActivity() {
 
 
     fun loginUser() {
-        var name = loginButton.text.toString()
+        var name = username.text.toString()
         media = Media(name)
         media.setPreferences(this)
         val intent = Intent(this, PrimaryActivity::class.java)
@@ -64,7 +61,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun signUpUser() {
-        var name = loginButton.text.toString()
+        var name = username.text.toString()
         media = Media(name)
         media.setPreferences(this)
         val intent = Intent(this, PrimaryActivity::class.java)
