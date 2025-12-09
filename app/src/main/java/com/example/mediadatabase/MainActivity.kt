@@ -30,6 +30,16 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
+        var sp = getSharedPreferences("data", Context.MODE_PRIVATE)
+
+        if(sp.getInt("LIGHTDARK", 0) == 1) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+
+
         enterButton = findViewById<Button>(R.id.enter)
         username = findViewById<EditText>(R.id.user)
 
@@ -63,7 +73,7 @@ class MainActivity : AppCompatActivity() {
         editor.putInt("LIGHTDARK", lightDarkFlag)
         editor.commit()
     }
-    
+
 
     fun enter() {
         var name = username.text.toString()
