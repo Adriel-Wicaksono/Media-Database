@@ -18,8 +18,7 @@ class LoginActivity : AppCompatActivity() {
     private lateinit var signUpButton : Button
 
     private lateinit var username: EditText
-
-    private lateinit var sName: String
+    private lateinit var media: Media
 
 
 
@@ -38,23 +37,18 @@ class LoginActivity : AppCompatActivity() {
 
     }
 
-    fun setPreferences(context: Context){
-        val sp: SharedPreferences =
-            context.getSharedPreferences(context.packageName + "_preferences", MODE_PRIVATE)
-        val editor: SharedPreferences.Editor = sp.edit()
-        sName = username.text.toString()
-        editor.putString("username", sName)
-        editor.commit()
-    }
-
     fun loginUser() {
-        setPreferences(this)
+        var name = username.text.toString()
+        media = Media(name)
+        media.setPreferences(this)
         val intent = Intent(this, AddMediaActivity::class.java)
         startActivity(intent)
     }
 
     fun signUpUser() {
-        setPreferences(this)
+        var name = username.text.toString()
+        media = Media(name)
+        media.setPreferences(this)
         val intent = Intent(this, RemoveMediaActivity::class.java)
         startActivity(intent)
     }
