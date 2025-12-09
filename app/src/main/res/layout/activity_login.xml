@@ -12,6 +12,16 @@
         android:layout_marginStart="45dp"
         />
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/user"
+        android:hint="Type your email here"
+        android:layout_marginStart="120dp"
+        android:layout_marginTop="220dp"
+        android:inputType="text"
+        />
+
     <Button
         android:text="Login"
         style="@style/login_page"
