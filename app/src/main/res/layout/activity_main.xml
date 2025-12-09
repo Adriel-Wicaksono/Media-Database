@@ -9,7 +9,7 @@
 
     <TextView
         android:id="@+id/Welcome"
-        style="@style/login_page"
+        style="@style/enter_page"
         android:text="@string/welcome"
         android:textSize="25sp"
         android:layout_marginTop="80dp"
@@ -27,35 +27,18 @@
         />
 
     <Button
-        android:text="Login"
-        style="@style/login_page"
-        android:id="@+id/login"
-        android:layout_marginStart="150dp"
+        android:text="Enter"
+        style="@style/enter_page"
+        android:id="@+id/enter"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="300dp"
-        />
-
-    <Button
-        android:id="@+id/signup"
-        style="@style/login_page"
-        android:text="Sign Up"
-        android:layout_marginTop="400dp"
-        android:layout_marginStart="140dp"
-        />
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="OR"
-        android:layout_marginStart="190dp"
-        android:layout_marginTop="365dp"
         />
 
 
     <Button
         android:text="Dark"
-        style="@style/login_page"
-        android:layout_below="@id/signup"
+        style="@style/enter_page"
+        android:layout_below="@id/enter"
         android:id="@+id/dark"
         android:layout_marginStart="40dp"
         android:layout_marginTop="180dp"
@@ -63,8 +46,8 @@
 
     <Button
         android:text="Light"
-        style="@style/login_page"
-        android:layout_below="@id/signup"
+        style="@style/enter_page"
+        android:layout_below="@id/enter"
         android:id="@+id/light"
         android:layout_marginTop="180dp"
         android:layout_marginLeft="260dp"
