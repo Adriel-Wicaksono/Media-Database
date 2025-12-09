@@ -1,17 +1,25 @@
 package com.example.mediadatabase
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import com.example.mediadatabase.AddMediaActivity
+import com.example.mediadatabase.R
+import com.example.mediadatabase.RemoveMediaActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var addMediaButton : Button
-    private lateinit var removeMediaButton : Button
+    private lateinit var loginButton : Button
+    private lateinit var signUpButton : Button
+
+    private lateinit var username: EditText
+    private lateinit var media : Media
+
 
 
 
@@ -21,21 +29,28 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        addMediaButton = findViewById<Button>(R.id.add_media)
-        removeMediaButton = findViewById<Button>(R.id.remove_media)
+        loginButton = findViewById<Button>(R.id.login)
+        signUpButton = findViewById<Button>(R.id.signup)
+        username = findViewById<EditText>(R.id.user)
 
-        addMediaButton.setOnClickListener { addMedia() }
-        removeMediaButton.setOnClickListener { removeMedia() }
+        loginButton.setOnClickListener { loginUser() }
+        signUpButton.setOnClickListener { signUpUser() }
 
     }
 
-    fun addMedia() {
-        var intent = Intent(this, AddMediaActivity::class.java)
+    fun loginUser() {
+        var name = loginButton.text.toString()
+        media = Media(name)
+        media.setPreferences(this)
+        val intent = Intent(this, AddMediaActivity::class.java)
         startActivity(intent)
     }
 
-    fun removeMedia() {
-        var intent = Intent(this, RemoveMediaActivity::class.java)
+    fun signUpUser() {
+        var name = loginButton.text.toString()
+        media = Media(name)
+        media.setPreferences(this)
+        val intent = Intent(this, RemoveMediaActivity::class.java)
         startActivity(intent)
     }
 
