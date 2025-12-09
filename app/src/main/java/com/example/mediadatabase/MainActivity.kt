@@ -21,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var media : Media
     private lateinit var light : Button
     private lateinit var dark : Button
+    private var lightDarkFlag : Int = 0
 
 
 
@@ -32,7 +33,7 @@ class MainActivity : AppCompatActivity() {
         enterButton = findViewById<Button>(R.id.enter)
         username = findViewById<EditText>(R.id.user)
 
-        enterButton.setOnClickListener { loginUser() }
+        enterButton.setOnClickListener { enter() }
 
         dark = findViewById<Button>(R.id.dark)
         light = findViewById<Button>(R.id.light)
@@ -43,24 +44,28 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun darkMode() {
+        lightDarkFlag = 1
+        setPreferences(this)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
     fun lightMode() {
+        lightDarkFlag = 0
+        setPreferences(this)
         AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
     }
 
 
-
-    fun loginUser() {
-        var name = username.text.toString()
-        media = Media(name)
-        media.setPreferences(this)
-        val intent = Intent(this, PrimaryActivity::class.java)
-        startActivity(intent)
+    fun setPreferences(context : Context) {
+        var sp = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+        var editor = sp.edit()
+        editor.putString("USERNAME", username.text.toString())
+        editor.putInt("LIGHTDARK", lightDarkFlag)
+        editor.commit()
     }
+    
 
-    fun signUpUser() {
+    fun enter() {
         var name = username.text.toString()
         media = Media(name)
         media.setPreferences(this)
