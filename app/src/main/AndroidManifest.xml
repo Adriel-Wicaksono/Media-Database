@@ -30,7 +30,6 @@
 
         <activity android:name=".AddMediaActivity" />
         <activity android:name=".RemoveMediaActivity" />
-
         <activity android:name="com.google.android.gms.ads.AdActivity" />
 
     </application>

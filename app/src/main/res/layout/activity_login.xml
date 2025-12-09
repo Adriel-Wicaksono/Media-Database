@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/Welcome"
+        style="@style/login_page"
+        android:text="@string/welcome"
+        android:textSize="25sp"
+        android:layout_marginTop="80dp"
+        android:layout_marginStart="45dp"
+        />
+
+    <Button
+        android:text="Login"
+        style="@style/login_page"
+        android:id="@+id/login"
+        android:layout_marginStart="150dp"
+        android:layout_marginTop="300dp"
+        />
+
+    <Button
+        android:id="@+id/signup"
+        style="@style/login_page"
+        android:text="Sign Up"
+        android:layout_marginTop="400dp"
+        android:layout_marginStart="140dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="OR"
+        android:layout_marginStart="190dp"
+        android:layout_marginTop="365dp"
+        />
+
+
+
+</RelativeLayout>
