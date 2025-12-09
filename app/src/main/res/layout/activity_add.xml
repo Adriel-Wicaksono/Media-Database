@@ -13,6 +13,16 @@
         android:layout_marginTop="80dp"
         android:textSize="26sp"
         />
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="When to watch"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/time"
+        android:layout_marginTop="10dp"
+        />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -34,6 +44,16 @@
         android:layout_marginTop="20dp"
         />
 
+    <EditText
+        android:layout_width="400dp"
+        android:layout_height="150dp"
+        android:hint="Notes to add"
+        android:layout_below="@id/rating"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/notes"
+        android:layout_marginTop="20dp"
+        android:gravity="top|left"
+        />
 
 
     <Button
@@ -41,7 +61,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/add_button"
         android:layout_below="@+id/location"
-        android:layout_marginTop="80dp"
+        android:layout_marginTop="250dp"
         android:layout_centerHorizontal="true"
         android:text="Add"
         android:textSize="26sp"
