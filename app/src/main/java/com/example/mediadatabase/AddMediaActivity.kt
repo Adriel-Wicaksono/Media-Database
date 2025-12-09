@@ -3,6 +3,7 @@ package com.example.mediadatabase
 import android.os.Bundle
 import android.util.Log
 import android.widget.Button
+import android.widget.EditText
 import android.widget.LinearLayout
 import android.widget.RatingBar
 import androidx.activity.enableEdgeToEdge
@@ -18,6 +19,12 @@ class AddMediaActivity : AppCompatActivity() {
     private lateinit var adView : AdView
     private lateinit var rb : RatingBar
 
+    private lateinit var notes: EditText
+
+    private lateinit var time: EditText
+    private lateinit var title: EditText
+    private lateinit var location: EditText
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -28,6 +35,11 @@ class AddMediaActivity : AppCompatActivity() {
         back = findViewById<Button>(R.id.add_back_button)
         rb = findViewById<RatingBar>(R.id.rating)
         rb.stepSize = .5f
+
+        notes = findViewById<EditText>(R.id.notes)
+        time = findViewById<EditText>(R.id.time)
+        title = findViewById<EditText>(R.id.title)
+        location = findViewById<EditText>(R.id.location)
 
 
         rb.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener {rb, rating, fromUser ->
