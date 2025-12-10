@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
 import android.os.Bundle
+import android.util.Log
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
@@ -40,8 +41,6 @@ class MainActivity : AppCompatActivity() {
             AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
         }
 
-
-
         enterButton = findViewById<Button>(R.id.enter)
         username = findViewById<EditText>(R.id.user)
 
@@ -52,6 +51,11 @@ class MainActivity : AppCompatActivity() {
 
         dark.setOnClickListener { darkMode() }
         light.setOnClickListener { lightMode() }
+
+        var storedUsername = sp.getString("USERNAME", "")
+        if(storedUsername != null && storedUsername.isNotEmpty()) {
+            username.setText(storedUsername)
+        }
     }
 
     fun darkMode() {
