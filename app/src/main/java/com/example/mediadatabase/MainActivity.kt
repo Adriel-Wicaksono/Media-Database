@@ -12,7 +12,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.app.AppCompatDelegate
 import com.example.mediadatabase.AddMediaActivity
 import com.example.mediadatabase.R
-import com.example.mediadatabase.RemoveMediaActivity
 
 class MainActivity : AppCompatActivity() {
 
