@@ -28,6 +28,8 @@ class MainActivity : AppCompatActivity() {
         lateinit var database : Database
     }
 
+    var primaryActivity: PrimaryActivity? = null
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()

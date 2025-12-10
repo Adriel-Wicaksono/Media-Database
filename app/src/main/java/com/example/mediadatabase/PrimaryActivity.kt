@@ -15,6 +15,7 @@ import android.widget.ScrollView
 import android.widget.TextView
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
+import kotlinx.coroutines.MainScope
 import java.util.Locale
 
 class PrimaryActivity : AppCompatActivity() {
@@ -29,6 +30,8 @@ class PrimaryActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_primary)
+
+        MainActivity.database.setUIUpdateFunc { populateMedia() }
 
         addMediaButton = findViewById<Button>(R.id.add_media)
         removeMediaButton = findViewById<Button>(R.id.remove_media)

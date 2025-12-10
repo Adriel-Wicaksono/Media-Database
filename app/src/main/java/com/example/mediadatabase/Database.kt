@@ -16,6 +16,7 @@ class Database : ChildEventListener {
     var username = ""
     private var createNewUser = true
 
+    var uiUpdateFunc : (() -> Unit)? = null
 
     constructor(username: String) {
         this.username = username
@@ -35,6 +36,10 @@ class Database : ChildEventListener {
                 }
             }
         }
+    }
+
+    fun setUIUpdateFunc(func : () -> Unit) {
+        uiUpdateFunc = func
     }
 
     fun updateMediaList(mlSnapshot : DataSnapshot) {
@@ -61,6 +66,8 @@ class Database : ChildEventListener {
         }
 
         mediaList.sortByDescending { it.dateWatched }
+
+        uiUpdateFunc?.invoke()
     }
 
     fun addMedia(media : Media) {
