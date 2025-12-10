@@ -15,6 +15,8 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.AdSize
 import com.google.android.gms.ads.AdView
 import java.time.LocalDateTime
+import kotlin.time.TimeSource
+import kotlin.time.measureTime
 
 class AddMediaActivity : AppCompatActivity() {
 
@@ -88,26 +90,31 @@ class AddMediaActivity : AppCompatActivity() {
         calendar.add(java.util.Calendar.HOUR, 1)
         val end = calendar.timeInMillis
 
-        // Updating database
-        val newMedia = Media(
-            title.text.toString(),
-            location.text.toString(),
-            start,
-            ratingVal,
-            notes.text.toString()
-            )
-        MainActivity.database.addMedia(newMedia)
+        val currentTime = System.currentTimeMillis()
 
-        val intent = Intent(Intent.ACTION_EDIT).apply {
-            type = "vnd.android.cursor.item/event"
-            putExtra(CalendarContract.Events.TITLE, title.text.toString())
-            putExtra(CalendarContract.Events.EVENT_LOCATION, location.text.toString())
-            putExtra(CalendarContract.Events.DESCRIPTION,title.text.toString())
-            putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, start)
-            putExtra(CalendarContract.EXTRA_EVENT_END_TIME, end)
-            putExtra(CalendarContract.Events.ALL_DAY, true)
+        if (start > currentTime) {
+            val intent = Intent(Intent.ACTION_EDIT).apply {
+                type = "vnd.android.cursor.item/event"
+                putExtra(CalendarContract.Events.TITLE, title.text.toString())
+                putExtra(CalendarContract.Events.EVENT_LOCATION, location.text.toString())
+                putExtra(CalendarContract.Events.DESCRIPTION,title.text.toString())
+                putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, start)
+                putExtra(CalendarContract.EXTRA_EVENT_END_TIME, end)
+                putExtra(CalendarContract.Events.ALL_DAY, true)
+            }
+            startActivity(intent)
+        } else {
+            // Updating database
+            val newMedia = Media(
+                title.text.toString(),
+                location.text.toString(),
+                start,
+                ratingVal,
+                notes.text.toString()
+            )
+            MainActivity.database.addMedia(newMedia)
         }
-        startActivity(intent)
+
         finish()
     }
 
