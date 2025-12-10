@@ -86,7 +86,7 @@ class PrimaryActivity : AppCompatActivity() {
             } else {
                 ratingBar.rating = media.rating!!
             }
-            ratingBar.setIsIndicator(false)
+            ratingBar.setIsIndicator(true)
             linearLayout.addView(ratingBar)
 
             val note = TextView(this)
