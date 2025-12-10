@@ -1,18 +1,27 @@
 package com.example.mediadatabase
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
+import androidx.appcompat.app.AppCompatDelegate
+import com.example.mediadatabase.AddMediaActivity
+import com.example.mediadatabase.R
+import com.example.mediadatabase.RemoveMediaActivity
 
 class MainActivity : AppCompatActivity() {
 
-    private lateinit var addMediaButton : Button
-    private lateinit var removeMediaButton : Button
+    private lateinit var enterButton : Button
 
+    private lateinit var username: EditText
+    private lateinit var media : Media
+    private lateinit var light : Button
+    private lateinit var dark : Button
+    private var lightDarkFlag : Int = 0
 
 
 
@@ -21,21 +30,56 @@ class MainActivity : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
 
-        addMediaButton = findViewById<Button>(R.id.add_media)
-        removeMediaButton = findViewById<Button>(R.id.remove_media)
+        var sp = getSharedPreferences("data", Context.MODE_PRIVATE)
 
-        addMediaButton.setOnClickListener { addMedia() }
-        removeMediaButton.setOnClickListener { removeMedia() }
+        if(sp.getInt("LIGHTDARK", 0) == 1) {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
+        } else {
+            AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+        }
+
+
+
+        enterButton = findViewById<Button>(R.id.enter)
+        username = findViewById<EditText>(R.id.user)
+
+        enterButton.setOnClickListener { enter() }
+
+        dark = findViewById<Button>(R.id.dark)
+        light = findViewById<Button>(R.id.light)
+
+        dark.setOnClickListener { darkMode() }
+        light.setOnClickListener { lightMode() }
 
     }
 
-    fun addMedia() {
-        var intent = Intent(this, AddMediaActivity::class.java)
-        startActivity(intent)
+    fun darkMode() {
+        lightDarkFlag = 1
+        setPreferences(this)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_YES)
     }
 
-    fun removeMedia() {
-        var intent = Intent(this, RemoveMediaActivity::class.java)
+    fun lightMode() {
+        lightDarkFlag = 0
+        setPreferences(this)
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
+
+    fun setPreferences(context : Context) {
+        var sp = context.getSharedPreferences("data", Context.MODE_PRIVATE)
+        var editor = sp.edit()
+        editor.putString("USERNAME", username.text.toString())
+        editor.putInt("LIGHTDARK", lightDarkFlag)
+        editor.commit()
+    }
+
+
+    fun enter() {
+        var name = username.text.toString()
+        media = Media(name)
+        media.setPreferences(this)
+        val intent = Intent(this, PrimaryActivity::class.java)
         startActivity(intent)
     }
 
