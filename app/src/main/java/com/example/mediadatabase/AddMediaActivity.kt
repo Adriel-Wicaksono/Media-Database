@@ -77,6 +77,11 @@ class AddMediaActivity : AppCompatActivity() {
     }
 
     fun update() {
+        // Will oly work if user enters a title
+        if (title.text.toString().isEmpty()){
+            return
+        }
+
         val calendar = java.util.Calendar.getInstance()
         calendar.set(datePicker.year,datePicker.month,datePicker.dayOfMonth, 0, 0)
         val start= calendar.timeInMillis
