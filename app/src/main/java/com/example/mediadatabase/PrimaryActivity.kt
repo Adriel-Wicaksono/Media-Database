@@ -25,6 +25,7 @@ class PrimaryActivity : AppCompatActivity() {
         addMediaButton.setOnClickListener { addMedia() }
         removeMediaButton.setOnClickListener { removeMedia() }
 
+
     }
 
     fun addMedia() {
