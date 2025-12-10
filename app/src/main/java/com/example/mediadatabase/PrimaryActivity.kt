@@ -20,7 +20,7 @@ import java.util.Locale
 class PrimaryActivity : AppCompatActivity() {
 
     private lateinit var addMediaButton : Button
-    private lateinit var removeMediaButton : Button
+    private lateinit var backButton : Button
     private lateinit var mediaLayout : GridLayout
     private lateinit var scrollView : ScrollView
 
@@ -32,14 +32,14 @@ class PrimaryActivity : AppCompatActivity() {
         MainActivity.database.setUIUpdateFunc { populateMedia() }
 
         addMediaButton = findViewById<Button>(R.id.add_media)
-        removeMediaButton = findViewById<Button>(R.id.remove_media)
+        backButton = findViewById<Button>(R.id.back)
         mediaLayout = findViewById<GridLayout>(R.id.displayUserMedia)
         scrollView = findViewById<ScrollView>(R.id.scroll)
 
         populateMedia()
 
         addMediaButton.setOnClickListener { addMedia() }
-        removeMediaButton.setOnClickListener { removeMedia() }
+        backButton.setOnClickListener { removeMedia() }
     }
 
     fun addMedia() {
@@ -48,8 +48,7 @@ class PrimaryActivity : AppCompatActivity() {
     }
 
     fun removeMedia() {
-        var intent = Intent(this, RemoveMediaActivity::class.java)
-        startActivity(intent)
+        finish()
     }
 
     override fun onResume() {
