@@ -97,7 +97,8 @@ class AddMediaActivity : AppCompatActivity() {
                 type = "vnd.android.cursor.item/event"
                 putExtra(CalendarContract.Events.TITLE, title.text.toString())
                 putExtra(CalendarContract.Events.EVENT_LOCATION, location.text.toString())
-                putExtra(CalendarContract.Events.DESCRIPTION,title.text.toString())
+                putExtra(CalendarContract.Events.DESCRIPTION,title.text.toString() +
+                        "\n" + notes.text.toString())
                 putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, start)
                 putExtra(CalendarContract.EXTRA_EVENT_END_TIME, end)
                 putExtra(CalendarContract.Events.ALL_DAY, true)
