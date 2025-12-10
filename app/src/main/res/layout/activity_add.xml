@@ -4,34 +4,35 @@
     android:layout_height="match_parent">
 
 
+    <DatePicker
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:hint="Date Watched"
+        android:id="@+id/date"
+        android:datePickerMode="spinner"
+        android:calendarViewShown="false"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="60dp"
+
+        />
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Media title"
+        android:hint="Media Title"
+        android:textSize="26sp"
+        android:layout_centerHorizontal="true"
         android:id="@+id/title"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="80dp"
-        android:textSize="26sp"
-        />
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:hint="When to watch"
-        android:textSize="26sp"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/time"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="5dp"
         />
 
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Where to watch"
+        android:hint="Where"
         android:id="@+id/location"
-        android:layout_below="@+id/title"
+        android:layout_below="@+id/date"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
         android:textSize="26sp"
         />
 
@@ -52,7 +53,7 @@
         android:layout_centerHorizontal="true"
         android:id="@+id/notes"
         android:layout_marginTop="20dp"
-        android:gravity="top|left"
+        android:gravity="top|start"
         />
 
 
@@ -61,7 +62,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/add_button"
         android:layout_below="@+id/location"
-        android:layout_marginTop="250dp"
+        android:layout_marginTop="240dp"
         android:layout_centerHorizontal="true"
         android:text="Add"
         android:textSize="26sp"
@@ -70,9 +71,9 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/add_back_button"
+        android:id="@+id/back_button"
         android:layout_below="@+id/add_button"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="60dp"
         android:layout_centerHorizontal="true"
         android:text="Back"
         android:textSize="26sp"
