@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "812906551116",
+    "project_id": "mediadatabase-936a3",
+    "storage_bucket": "mediadatabase-936a3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:812906551116:android:dfb744855ab8a7f7d0e1e9",
+        "android_client_info": {
+          "package_name": "com.example.mediadatabase"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCWUJ_3-E82kgPSfsl_NwbKyE8YONshM0Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

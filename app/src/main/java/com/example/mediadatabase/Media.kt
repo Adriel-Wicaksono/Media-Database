@@ -2,20 +2,10 @@ package com.example.mediadatabase
 
 import android.content.Context
 
-class Media {
-
-    private var username : String = ""
-
-    constructor(username : String) {
-        this.username = username
-    }
-
-    fun setPreferences(context : Context) {
-        var sp = context.getSharedPreferences("username", Context.MODE_PRIVATE)
-        var editor = sp.edit()
-        editor.putString("USERNAME", username)
-        editor.commit()
-    }
-
+class Media (var title : String,
+                  var where : String?,
+                  var dateWatched : Long,
+                  var rating : Float?,
+                  var note : String?) {
 
 }

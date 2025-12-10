@@ -23,7 +23,9 @@ class MainActivity : AppCompatActivity() {
     private lateinit var dark : Button
     private var lightDarkFlag : Int = 0
 
-
+    companion object {
+        lateinit var database : Database
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,7 +52,6 @@ class MainActivity : AppCompatActivity() {
 
         dark.setOnClickListener { darkMode() }
         light.setOnClickListener { lightMode() }
-
     }
 
     fun darkMode() {
@@ -77,10 +78,13 @@ class MainActivity : AppCompatActivity() {
 
     fun enter() {
         var name = username.text.toString()
-        media = Media(name)
-        media.setPreferences(this)
-        val intent = Intent(this, PrimaryActivity::class.java)
-        startActivity(intent)
+        if (name.isNotEmpty()) {
+            setPreferences(this)
+
+            database = Database(name)
+            val intent = Intent(this, PrimaryActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 
