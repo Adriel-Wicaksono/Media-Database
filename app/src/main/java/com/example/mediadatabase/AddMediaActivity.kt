@@ -30,6 +30,7 @@ class AddMediaActivity : AppCompatActivity() {
     private lateinit var title: EditText
     private lateinit var location: EditText
 
+    private var ratingVal = 0f
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -48,7 +49,7 @@ class AddMediaActivity : AppCompatActivity() {
 
 
         rb.onRatingBarChangeListener = RatingBar.OnRatingBarChangeListener {rb, rating, fromUser ->
-            var ratingVal = rating
+            ratingVal = rating
             Log.w("MainActivity", "" + ratingVal)
         }
 
@@ -82,6 +83,16 @@ class AddMediaActivity : AppCompatActivity() {
         calendar.add(java.util.Calendar.HOUR, 1)
         val end = calendar.timeInMillis
 
+        // Updating database
+        val newMedia = Media(
+            title.text.toString(),
+            location.text.toString(),
+            start,
+            ratingVal,
+            notes.text.toString()
+            )
+        MainActivity.database.addMedia(newMedia)
+
         val intent = Intent(Intent.ACTION_EDIT).apply {
             type = "vnd.android.cursor.item/event"
             putExtra(CalendarContract.Events.TITLE, title.text.toString())
@@ -92,6 +103,7 @@ class AddMediaActivity : AppCompatActivity() {
             putExtra(CalendarContract.Events.ALL_DAY, true)
         }
         startActivity(intent)
+        finish()
     }
 
     fun back() {
